@@ -1,0 +1,75 @@
+[
+  {
+    "id": "1",
+    "name": "Classic Moussaka",
+    "country": "Greece",
+    "image": "https://www.thespruceeats.com/thmb/xjFkvnHv09QLKwelDCmEfhjCxpE=/1499x1499/smart/filters:no_upscale()/GreekMoussakawithpotato-GettyImages-135573849-596228d73df78cdc68ba9a3f.jpg",
+    "description": "An easy version of the classic Greek dish moussaka, cheesy and comforting...",
+    "ingredients": "500g pack lean minced beef,1 large aubergine,150g pot 0% Greek yogurt,1 egg,3 tbsp parmesan,400g can chopped tomato with garlic and herbs,4 tbsp sun-dried tomato purée,400g leftover boiled potato",
+    "nutrition per serving": {
+      "kcal": "342",
+      "fat": "9g",
+      "saturates": "4g",
+      "carbs": "25g",
+      "sugars": "6g",
+      "fibre": "4g",
+      "protein": "41g",
+      "salt": "0.97g"
+    }
+  },
+  {
+    "id": "2",
+    "name": "Smoked Salmon Taramasalata",
+    "country": "Greece",
+    "image": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/taramasalata-401c253.jpg",
+    "description": "This Greek dip is an original way to use up leftover smoked salmon and works well on a sharing mezze platter",
+    "ingredients": "100g smoked salmon, 200g low-fat soft cheese,100g crème fraîche, juice 1 lemon, drizzle of olive oil,black kalamata olive and toasted pitta bread",
+    "nutrition per serving": {
+      "kcal": "203",
+      "fat": "15g",
+      "saturates": "10g",
+      "carbs": "2g",
+      "sugars": "2g",
+      "fibre": "0g",
+      "protein": "14g",
+      "salt": "1.8g"
+    }
+  },
+  {
+    "id": "3",
+    "name": "Greek Salad",
+    "country": "Greece",
+    "image": "https://www.cookingclassy.com/wp-content/uploads/2018/02/greek-salad-4.jpg",
+    "description": "Make a fresh and colourful Greek salad in no time. It's great with grilled meats at a barbecue, or on its own as a veggie main",
+    "ingredients": "4 large vine tomatoes,1 cucumber,½ a red onion thinly sliced,16 Kalamata olives,1 tsp dried oregano,85g feta cheese,4 tbsp Greek extra virgin olive oil",
+    "nutrition per serving": {
+      "kcal": "270",
+      "fat": "24g",
+      "saturates": "6g",
+      "carbs": "8g",
+      "sugars": "7g",
+      "fibre": "3g",
+      "protein": "9g",
+      "salt": "2.64g"
+    }
+  },
+
+  {
+    "id": "4",
+    "name": "Baklava",
+    "country": "Greece",
+    "image": "https://www.mygreekdish.com/wp-content/uploads/2013/05/Traditional-Greek-Baklava-recipe-with-honey-and-walnuts-1-scaled.jpeg",
+    "description": "Our version of syrup-soaked baklava is gently spiced with cinnamon and cardamom, and has a blend of pecans, pistachios and walnuts",
+    "ingredients": "200g butter,200g pistachios,50g walnuts,50g pecans,3 tbsp honey,2 x 270g pack filo pastry,250g golden caster sugar,50g honey,2 tsp orange blossom water,½ tsp ground cinnamon,¼ tsp ground cardamom (from 3 pods)",
+    "nutrition per serving": {
+      "kcal": "224",
+      "fat": "12g",
+      "saturates": "4g",
+      "carbs": "24g",
+      "sugars": "13g",
+      "fibre": "2g",
+      "protein": "4g",
+      "salt": "0.3g"
+    }
+  }
+]

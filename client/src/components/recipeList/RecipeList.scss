@@ -1,0 +1,50 @@
+@use '../../partials/mixin' as *;
+@use '../../partials/typography' as *;
+@use '../../partials/colors' as *;
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.card__wrapper__images {
+  width: 400px;
+  height: 350px;
+  border-radius: 15px;
+  @include tablet {
+    height: 250px;
+    width: 300px;
+    border-radius: 15px;
+  }
+}
+.card {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  //margin: 20px;
+  //background-color: $light_gray;
+  &__wrapper-single {
+    padding: 20px;
+    background-color: $white_color;
+    border: 1px solid $light_gray;
+    margin: 16px;
+    border-radius: 15px;
+  }
+  &__wrapper-name {
+    width: 400px;
+    margin-top: 20px;
+    font-family: "Dancing Script Semibold";
+    @include typeKit(1.2rem, 600, 0, 0, 0);
+    @include tablet {
+      width: 300px;
+      @include typeKit(0.9rem, 400, 0, 0, 0);
+    }
+  }
+  &__wrapper-country {
+    padding-top: 20px;
+    font-family: "Avenir Next LT Pro Demi";
+  }
+}

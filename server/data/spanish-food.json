@@ -1,0 +1,74 @@
+[
+  {
+    "id": "1",
+    "name": "Chicken & chorizo rice pot",
+    "country": "Spain",
+    "image": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/recipe-image-legacy-id-954452_11-fc1175f.jpg",
+    "description": "A one-pot chicken casserole for sharing, flavoured with Spanish sausage and slow-cooked with rice - an alternative paella",
+    "ingredients": "1 tbsp oil,8 chicken pieces or 1 whole chicken,1 large onion,1 red pepper,3 garlic cloves,225g chorizo,1 tbsp tomato purée,1 tbsp thyme leaf,150ml white wine,850ml chicken stock,400g long grain rice,2 tbsp chopped parsley",
+    "nutrition per serving": {
+      "kcal": "834",
+      "fat": "21g",
+      "saturates": "7g",
+      "carbs": "90g",
+      "sugars": "9g",
+      "fibre": "4g",
+      "protein": "63g",
+      "salt": "1.7g"
+    }
+  },
+  {
+    "id": "2",
+    "name": "Paella",
+    "country": "Spain",
+    "image": "https://tastesbetterfromscratch.com/wp-content/uploads/2020/04/Paella-7-500x500.jpg",
+    "description": "Think paella's too much of a challenge? Think again, this easy recipe makes it foolproof and is full of fantastic flavour",
+    "ingredients": "1 tbsp olive oil,1 leek or onion,110g pack chorizo sausage,1 tsp turmeric,300g long grain rice,1l hot fish or chicken stock,200g frozen pea,400g frozen seafood mix",
+    "nutrition per serving": {
+      "kcal": "518",
+      "fat": "12g",
+      "saturates": "0.4g",
+      "carbs": "75g",
+      "sugars": "5g",
+      "fibre": "5g",
+      "protein": "32g",
+      "salt": "1.29g"
+    }
+  },
+  {
+    "id": "3",
+    "name": "Chorizo & chickpea soup",
+    "country": "Spain",
+    "image": "https://www.deliciousmagazine.co.uk/wp-content/uploads/2013/10/chorizo-soup-768x960.jpg",
+    "description": "Sizzling Chorizo & chickpea soup",
+    "ingredients": "400g can chopped tomato,110g pack of chorizo sausage,140g wedge Savoy cabbage,sprinkling dried chilli flakes,410g can chickpea,1 chicken or vegetable stock cube,crusty bread or garlic bread",
+    "nutrition per serving": {
+      "kcal": "366",
+      "fat": "18g",
+      "saturates": "5g",
+      "carbs": "30g",
+      "sugars": "0g",
+      "fibre": "9g",
+      "protein": "23g",
+      "salt": "4.26g"
+    }
+  },
+  {
+    "id": "4",
+    "name": "Spanish fig & almond balls",
+    "country": "Spain",
+    "image": "https://thumbs.dreamstime.com/z/traditional-portuguese-sweet-fig-carob-almond-balls-isolated-white-background-traditional-fig-almond-balls-107184224.jpg",
+    "description": "A festive version of Pan de Higo, a dried fig cake that the Spanish traditionally eat with cheese and a drizzle of honey",
+    "ingredients": "100g whole almond ,500g pack dried whole fig ,85g dried apricot,50g dried cranberries,1 tbsp brandy,1 tbsp clear honey,1 tsp ground cloves,100g sesame seed",
+    "nutrition per serving": {
+      "kcal": "306",
+      "fat": "20g",
+      "saturates": "2g",
+      "carbs": "24g",
+      "sugars": "23g",
+      "fibre": "5g",
+      "protein": "8g",
+      "salt": "0.05g"
+    }
+  }
+]

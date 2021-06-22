@@ -1,0 +1,74 @@
+@use '../../partials/mixin' as *;
+@use '../../partials/typography' as *;
+@use '../../partials/colors' as *;
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  //position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  background-color: $orange_color;
+  height: 56px;
+  display: flex;
+  // margin-bottom: 60px;
+  border-bottom: 1px solid #222;
+  @include tablet {
+    //display: flex;
+    //align-items: flex-end;
+    //justify-content: space-around;
+    //width: 100%;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 1rem;
+    @include tablet {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 90%;
+    }
+  }
+}
+
+.header__main-nav {
+  display: flex;
+  //@include Flex(row, flex-end, space-around);
+  @include smartphone {
+    display: none;
+  }
+}
+.header__toggle-btn {
+  @include tablet {
+    display: none;
+  }
+}
+.header__main-title {
+  padding-left: 2rem;
+  font-family: "Dancing Script Medium";
+  @include typeKit(1.5rem, 600, 0, $white_color, 0);
+}
+.header__main-nav {
+  @include tablet {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 60%;
+  }
+}
+a {
+  text-decoration: none;
+  font-family: "Avenir Next LT Pro Demi";
+}
