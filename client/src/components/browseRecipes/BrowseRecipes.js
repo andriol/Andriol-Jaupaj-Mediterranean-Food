@@ -26,7 +26,7 @@ class BrowseRecipes extends Component {
 
   browseRecipes = () => {
     return axios
-      .get("http://localhost:8080/mediterranean")
+      .get("http://localhost:8081/mediterranean")
       .then((res) => {
         console.log(res.data);
         this.setState({
@@ -40,8 +40,9 @@ class BrowseRecipes extends Component {
 
   getIndividualRecipe = (id) => {
     return axios
-      .get(`http://localhost:8080/mediterranean/${id}`)
+      .get(`http://localhost:8081/mediterranean/${id}`)
       .then((res) => {
+        console.log(res.data);
         this.setState({
           selectedRecipe: res.data,
         });
