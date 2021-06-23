@@ -11,8 +11,9 @@ app.use(cors());
 
 app.use(express.json());
 
-app.use("/mediterranean", mediterraneanRoutes);
+app.use(express.static("public"));
 
+app.use("/mediterranean", mediterraneanRoutes);
 app.use("/profile", profileRoute);
 
 app.listen(PORT, () => {

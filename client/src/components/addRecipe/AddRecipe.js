@@ -3,32 +3,32 @@ import axios from "axios";
 import FormData from "form-data";
 import "./AddRecipe.scss";
 
-const AddRecipe = ({ imageSelectHandler, selectedFile, onClickHandler }) => {
-  console.log(imageSelectHandler, onClickHandler);
+const AddRecipe = ({ onImageChange, onFormSubmit }) => {
+  console.log(onImageChange, onFormSubmit);
   const fileUploadHandler = (e) => {
     e.preventDefault();
     // const data = new FormData();
     // // data.append("image", selectedFile, selectedFile.name);
     // console.log(selectedFile);
-    // const form = e.target;
+    const form = e.target;
 
-    // axios
-    //   .post("http://localhost:8080/mediterranean", {
-    //     name: form.name.value,
-    //     country: form.country.value,
-    //     // image: selectedFile.name,
-    //   })
-    //   .then((res) => {
-    //     console.log(res);
-    //   });
+    axios
+      .post("http://localhost:8081/mediterranean", {
+        name: form.name.value,
+        country: form.country.value,
+        description: form.description.value,
+        ingredients: form.ingredients.value,
+      })
+      .then((res) => {
+        console.log(res);
+      });
   };
-
   return (
     <>
       <div className="recipe__page">
         <div className="recipe__page-header">Add Your Mediterranean Recipe</div>
 
-        <form onSubmit={fileUploadHandler}>
+        <form onSubmit={onFormSubmit}>
           <div className="recipe__container">
             <label className="recipe__form-name">Recipe Name</label>
             <input
@@ -48,10 +48,11 @@ const AddRecipe = ({ imageSelectHandler, selectedFile, onClickHandler }) => {
             />
             <label className="recipe__form-image">Recipe Image</label>
             <input
-              name="file"
+              name="avatar"
               className="recipe__form-image--input"
               type="file"
-              onChange={imageSelectHandler}
+              accept=".png, .jpg"
+              onChange={onImageChange}
             />
             <label className="recipe__form-description">
               Recipe description
@@ -76,7 +77,7 @@ const AddRecipe = ({ imageSelectHandler, selectedFile, onClickHandler }) => {
               <button
                 type="submit"
                 className="recipe__form-button--upload"
-                onClick={onClickHandler}
+                onClick={onImageChange}
               >
                 Upload
               </button>
