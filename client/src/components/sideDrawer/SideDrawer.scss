@@ -1,3 +1,15 @@
+@use '../../partials/mixin' as *;
+@use '../../partials/typography' as *;
+@use '../../partials/colors' as *;
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .side-drawer {
   height: 100%;
   background: white;
@@ -15,7 +27,18 @@
 .side-drawer.open {
   transform: translateX(0);
 }
-
+.side-drawer {
+  @include tablet {
+    display: none;
+  }
+}
+ul {
+  padding-left: 20px;
+  list-style-type: none;
+}
+a {
+  font-family: "Avenir Next LT Pro Bold";
+}
 // .side-drawer ul {
 //   height: 100%;
 //   list-style: none;
@@ -39,8 +62,8 @@
 //   color: #fa923f;
 // }
 
-@media screen and (min-width: 759px) {
-  .side-drawer {
-    display: none;
-  }
-}
+// @media screen and (min-width: 759px) {
+//   .side-drawer {
+//     display: none;
+//   }
+// }

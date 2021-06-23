@@ -3,6 +3,7 @@ import { Route } from "react-router";
 import axios from "axios";
 import FormData from "form-data";
 import AddRecipe from "../addRecipe/AddRecipe";
+
 class UploadImage extends Component {
   constructor(props) {
     super(props);
@@ -23,13 +24,13 @@ class UploadImage extends Component {
     data.append("file", this.state.selectedFile);
 
     axios
-      .post("http://localhost:8080/mediterranean", data, {
+      .post("http://localhost:8081/profile", data, {
         // name: form.name.value,
         // country: form.country.value,
         // image: selectedFile.name,
       })
       .then((res) => {
-        console.log(res.statusText);
+        console.log(res);
       });
   };
 
@@ -40,8 +41,8 @@ class UploadImage extends Component {
           path="/recipeForm"
           render={() => (
             <AddRecipe
-              imageSelectHandler={this.imageSelectHandler}
-              onClickHandler={this.clickHandler}
+              handleFileChange={this.handleFileChange}
+              handleSubmit={this.handleSubmit}
             />
           )}
         />

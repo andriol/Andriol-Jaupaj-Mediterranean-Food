@@ -32,6 +32,14 @@
   z-index: 1;
   padding: 20px;
   border-radius: 15px;
+  @include tablet {
+    display: flex;
+    width: 650px;
+  }
+  @include desktop {
+    width: 800px;
+    height: 500px;
+  }
   &-name {
     font-family: "Dancing Script Semibold";
     margin: 10px 0;
@@ -45,18 +53,37 @@
   &-description {
     font-family: "Avenir Next LT Demi";
     @include typeKit(0.9rem, 0, 1.2rem, $dark_orange, 0);
+    border-bottom: 2px solid $light_gray;
+    padding-bottom: 8px;
   }
   &-image {
     height: 400px;
     width: 440px;
+    @include tablet {
+      width: 300px;
+      min-height: 100%;
+    }
+    @include desktop {
+      height: 100%;
+      width: 450px;
+    }
   }
   &-ingredients {
     font-family: "Avenir Next LT Pro";
+    padding-top: 8px;
   }
   &-button {
     height: 20px;
     width: 20px;
     background-color: $black_color;
     color: $white_color;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+  &-textarea {
+    @include tablet {
+      margin-left: 20px;
+    }
   }
 }
