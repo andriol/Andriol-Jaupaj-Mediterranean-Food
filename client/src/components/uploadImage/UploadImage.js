@@ -1,4 +1,5 @@
 import React, { useState, Route } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import AddRecipe from "../addRecipe/AddRecipe";
 
@@ -8,7 +9,7 @@ const UploadImage = () => {
   const onFormSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("avatar", file);
+    formData.append("image", file);
     const config = {
       headers: {
         "content-type": "multipart/form-data",
@@ -17,7 +18,8 @@ const UploadImage = () => {
     axios
       .post("http://localhost:8081/profile", formData, config)
       .then((res) => {
-        alert("image uploaded successfully");
+        console.log(res);
+        alert(" upload was successful");
       })
       .catch((err) => {
         console.log("err");
@@ -36,6 +38,11 @@ const UploadImage = () => {
       .catch((err) => {
         console.log("err");
       });
+
+    form.name.value = "";
+    form.country.value = "";
+    form.description.value = "";
+    form.ingredients.value = "";
   };
 
   const onImageChange = (e) => {
@@ -53,7 +60,7 @@ const UploadImage = () => {
             className="recipe__form-name--input"
             type="text"
             placeholder="Add recipe name"
-            //required
+            required
           />
           <label className="recipe__form-country">Country</label>
           <input
@@ -61,11 +68,11 @@ const UploadImage = () => {
             className="recipe__form-country--input"
             type="text"
             placeholder="Country of origin"
-            //required
+            required
           />
           <label className="recipe__form-image">Recipe Image</label>
           <input
-            name="avatar"
+            name="image"
             className="recipe__form-image--input"
             type="file"
             accept=".png, .jpg"
@@ -77,6 +84,7 @@ const UploadImage = () => {
             className="recipe__form-description--input"
             type="text"
             placeholder="recipe description"
+            required
           />
           <label className="recipe__form-ingredients">Recipe ingredients</label>
           <input
@@ -84,9 +92,12 @@ const UploadImage = () => {
             className="recipe__form-ingredients--input"
             type="text"
             placeholder="recipe ingredients"
+            required
           />
           <div className="recipe__form-buttons">
-            <button className="recipe__form-button--cancel">Cancel</button>
+            <Link to="/recipeForm">
+              <button className="recipe__form-button--cancel">Cancel</button>
+            </Link>
             <button
               type="submit"
               className="recipe__form-button--upload"

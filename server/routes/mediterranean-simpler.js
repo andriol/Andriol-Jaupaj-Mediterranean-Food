@@ -38,6 +38,7 @@ router.post("/", (req, res) => {
   const mediterraneanData = readData();
   const newMed = {
     id: uuid4(),
+    image: req.body.path,
     ...req.body,
   };
   mediterraneanData.push(newMed);

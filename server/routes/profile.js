@@ -10,15 +10,17 @@ const storage = multer.diskStorage({
     cb(null, file.fieldname + "_" + Date.now() + ".png");
   },
 });
-const upload = multer({ storage: storage }).single("avatar");
+const upload = multer({ storage: storage }).single("image");
 
 router.post("/", function (req, res) {
   upload(req, res, function (err) {
+    console.log(req.file);
     if (err) {
     }
     res.json({
+      image: req.file,
       success: true,
-      message: "Image uploaded successfully",
+      message: "Upload successful",
     });
   });
 });
