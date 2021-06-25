@@ -16,7 +16,7 @@ export default class Home extends Component {
           <img
             className="home__page-image--one"
             src={ImageOne}
-            alt="turkish cuisine"
+            alt="Mediterranean Cuisine"
           />
           <p className="legend">Mediterranean Cuisine</p>
         </div>
@@ -24,7 +24,7 @@ export default class Home extends Component {
           <img
             className="home__page-image--two"
             src={ImageTwo}
-            alt="turkish cuisine"
+            alt="Turkish Cuisine"
           />
           <p className="legend">Turkish Cuisine</p>
         </div>
@@ -32,7 +32,7 @@ export default class Home extends Component {
           <img
             className="home__page-image--three"
             src={ImageThree}
-            alt="mediterranean diet"
+            alt="Mediterranean Diet"
           />
           <p className="legend">Mediterranean Diet</p>
         </div>
@@ -40,7 +40,7 @@ export default class Home extends Component {
           <img
             className="home__page-image--four"
             src={ImageFour}
-            alt="greek cuisine"
+            alt="Greek Cuisine"
           />
           <p className="legend">Greek Restaurant</p>
         </div>
