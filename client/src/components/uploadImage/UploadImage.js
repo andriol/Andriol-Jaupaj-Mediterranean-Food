@@ -5,6 +5,7 @@ import AddRecipe from "../addRecipe/AddRecipe";
 
 const UploadImage = () => {
   const [file, setFile] = useState(null);
+  const [recipe, setRecipe] = useState(null);
 
   const onFormSubmit = (e) => {
     e.preventDefault();
@@ -15,15 +16,7 @@ const UploadImage = () => {
         "content-type": "multipart/form-data",
       },
     };
-    axios
-      .post("http://localhost:8081/profile", formData, config)
-      .then((res) => {
-        console.log(res);
-        alert(" upload was successful");
-      })
-      .catch((err) => {
-        console.log("err");
-      });
+
     const form = e.target;
     axios
       .post("http://localhost:8081/mediterranean", {
@@ -34,17 +27,28 @@ const UploadImage = () => {
       })
       .then((res) => {
         console.log(res);
+        setRecipe(res.data);
       })
+
       .catch((err) => {
         console.log("err");
       });
 
+    axios
+      .post("http://localhost:8081/profile", formData, config)
+      .then((res) => {
+        console.log(res);
+        setRecipe({ ...recipe, image: res.data.image.path });
+      })
+      .catch((err) => {
+        console.log("err");
+      });
     form.name.value = "";
     form.country.value = "";
     form.description.value = "";
     form.ingredients.value = "";
   };
-
+  console.log(recipe);
   const onImageChange = (e) => {
     setFile(e.target.files[0]);
   };
@@ -95,9 +99,9 @@ const UploadImage = () => {
             required
           />
           <div className="recipe__form-buttons">
-            <Link to="/recipeForm">
+            {/* <Link to="/recipeForm">
               <button className="recipe__form-button--cancel">Cancel</button>
-            </Link>
+            </Link> */}
             <button
               type="submit"
               className="recipe__form-button--upload"

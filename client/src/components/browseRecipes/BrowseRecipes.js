@@ -28,7 +28,7 @@ class BrowseRecipes extends Component {
     return axios
       .get("http://localhost:8081/mediterranean")
       .then((res) => {
-        console.log(res.data);
+        console.log(res.data[res.data.length - 1]);
         this.setState({
           recipes: res.data,
         });

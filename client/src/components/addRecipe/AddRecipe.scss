@@ -51,6 +51,9 @@
   color: $white_color;
   margin-left: 20px;
 }
+.recipe__form-button--upload:hover {
+  background-color: $med_dark_blue;
+}
 .recipe__form-name--input,
 .recipe__form-country--input,
 .recipe__form-image--input,
@@ -59,7 +62,7 @@
   width: 100%;
   border-radius: 20px;
   height: 36px;
-  border: 1px solid $med_dark_blue;
+  border: 1px solid $dark_gray;
   padding: 8px 0 8px 16px;
   box-sizing: border-box;
 }

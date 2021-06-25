@@ -9,7 +9,9 @@ const Toolbar = (props) => (
       <div className="header__toggle-btn">
         <SideMenu click={props.drawerToggle} />
       </div>
-      <div className="header__main-title">Mediterranean Food</div>
+      <Link to="/">
+        <div className="header__main-title">Mediterranean Food</div>
+      </Link>
       <div className="header__main-nav">
         <Link to="/">
           <div className="header__main-nav-home">Home</div>
