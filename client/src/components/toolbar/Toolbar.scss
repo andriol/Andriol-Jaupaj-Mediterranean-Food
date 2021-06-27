@@ -38,6 +38,7 @@
       align-items: center;
       justify-content: space-between;
       width: 90%;
+      @include typeKit(0.9rem, 600, 0, 0, 0);
     }
   }
 }
@@ -57,7 +58,7 @@
 .header__main-title {
   padding-left: 2rem;
   font-family: "Dancing Script Medium";
-  @include typeKit(1.5rem, 600, 0, $white_color, 0);
+  @include typeKit(1.7rem, 600, 0, $white_color, 0);
 }
 .header__main-nav {
   @include tablet {

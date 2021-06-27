@@ -22,7 +22,9 @@ const Toolbar = (props) => (
         <Link to="/recipeForm">
           <div className="header__main-nav-add">Add Your Recipe!</div>
         </Link>
-        <div className="header__main-nav-signup">Sign up!</div>
+        <Link to="/login">
+          <div className="header__main-nav-signup">Log in/Sign up!</div>
+        </Link>
       </div>
     </nav>
   </header>

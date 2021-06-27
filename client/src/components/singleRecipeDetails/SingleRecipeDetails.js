@@ -1,14 +1,10 @@
 import React, { useState } from "react";
 import "./SingleRecipeDetails.scss";
+import DeleteRecipe from "../deleteRecipe/DeleteRecipe";
 
 const SingleRecipeDetails = ({ recipe, show, handleToggle }) => {
-  console.log(recipe);
   const { name, image, country, description, ingredients } = recipe;
-  // if (show) {
-  //   document.body.classList.add("active-show");
-  // } else {
-  //   document.body.classList.remove("active-show");
-  // }
+
   return (
     <>
       {show && (

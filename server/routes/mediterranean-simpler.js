@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const { v4: uuid4 } = require("uuid");
 const fs = require("fs");
-//const { route } = require("./mediterranean");
 
 const readData = () => {
   return JSON.parse(fs.readFileSync("./data/mediterranean.json"));
@@ -34,11 +33,12 @@ router.get("/:mediterraneanId", (req, res) => {
   );
   res.status(200).json(currMediterranean);
 });
+
 router.post("/", (req, res) => {
   const mediterraneanData = readData();
   const newMed = {
     id: uuid4(),
-    image: req.body.path,
+    //image: req.body.path,
     ...req.body,
   };
   mediterraneanData.push(newMed);
@@ -71,7 +71,7 @@ router.delete("/:mediterraneanId", (req, res) => {
     (med) => med.id !== currMediterraneanId
   );
   writeData(filteredMed);
-  res.status(204).json({ status: "Deleted" });
+  res.status(204).json(writeData);
 });
 
 module.exports = router;

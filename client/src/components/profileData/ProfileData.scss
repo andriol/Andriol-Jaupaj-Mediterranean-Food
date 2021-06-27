@@ -1,0 +1,35 @@
+@use '../../partials/mixin' as *;
+@use '../../partials/typography' as *;
+@use '../../partials/colors' as *;
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.logout__button {
+  width: 70px;
+  height: 28px;
+  background-color: $med_blue;
+  border-radius: 20px;
+  border: 1px solid $light_gray;
+  color: $white_color;
+  margin: 2rem;
+}
+.logout__button:hover {
+  background-color: $med_dark_blue;
+}
+h2 {
+  font-family: "Avenit Next LT Pro Demi";
+}
+h3 {
+  margin: 1rem;
+}
+.profile__data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

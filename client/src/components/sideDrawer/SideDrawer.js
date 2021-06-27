@@ -19,7 +19,10 @@ const SideDrawer = (props) => {
           <a href="/mediterranean">Browse Recipes</a>
         </li>
         <li>
-          <a href="/recipeForm">Add Your Recipe</a>{" "}
+          <a href="/recipeForm">Add Your Recipe</a>
+        </li>
+        <li>
+          <a href="/login">Log in/Sign up!</a>{" "}
         </li>
       </ul>
     </nav>

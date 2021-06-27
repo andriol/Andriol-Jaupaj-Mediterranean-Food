@@ -1,3 +1,14 @@
+@use '../../partials/mixin' as *;
+@use '../../partials/typography' as *;
+@use '../../partials/colors' as *;
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .toggle-button {
   height: 24px;
   width: 30px;

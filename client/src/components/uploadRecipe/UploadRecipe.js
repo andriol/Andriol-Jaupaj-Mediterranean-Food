@@ -2,10 +2,11 @@ import React, { useState, Route } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import AddRecipe from "../addRecipe/AddRecipe";
+import "./UploadRecipe.scss";
 
 const UploadImage = () => {
   const [file, setFile] = useState(null);
-  const [recipe, setRecipe] = useState(null);
+  const [recipes, setRecipe] = useState(null);
 
   const onFormSubmit = (e) => {
     e.preventDefault();
@@ -37,8 +38,8 @@ const UploadImage = () => {
     axios
       .post("http://localhost:8081/profile", formData, config)
       .then((res) => {
-        console.log(res);
-        setRecipe({ ...recipe, image: res.data.image.path });
+        console.log(res.data.image);
+        setRecipe({ ...recipes, image: res.data.image.path });
       })
       .catch((err) => {
         console.log("err");
@@ -48,7 +49,7 @@ const UploadImage = () => {
     form.description.value = "";
     form.ingredients.value = "";
   };
-  console.log(recipe);
+  console.log(recipes);
   const onImageChange = (e) => {
     setFile(e.target.files[0]);
   };
@@ -99,14 +100,7 @@ const UploadImage = () => {
             required
           />
           <div className="recipe__form-buttons">
-            {/* <Link to="/recipeForm">
-              <button className="recipe__form-button--cancel">Cancel</button>
-            </Link> */}
-            <button
-              type="submit"
-              className="recipe__form-button--upload"
-              // onClick={onImageChange}
-            >
+            <button type="submit" className="recipe__form-button--upload">
               Upload
             </button>
           </div>

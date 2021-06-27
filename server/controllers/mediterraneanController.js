@@ -11,14 +11,22 @@ function getIndividual(req, res) {
   res.status(200).json(currMediterranean);
 }
 function createMediterranean(req, res) {
-  if (!req.body.name || !req.body.country || !req.body.description) {
+  if (
+    !req.body.name ||
+    !req.body.country ||
+    !req.body.description ||
+    !req.body.ingredients
+  ) {
     res
       .status(400)
-      .send("please provide name, country and description of the food recipe");
+      .send(
+        "please provide name, country,ingredients and description of the food recipe"
+      );
   }
   const newMed = mediterraneanModel.createMediterranean(req.body);
   res.status(200).json(newMed);
 }
+
 module.exports = {
   getAllData,
   getIndividual,

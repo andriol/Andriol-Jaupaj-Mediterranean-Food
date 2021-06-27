@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "./components/home/Home";
 import BrowseRecipes from "./components/browseRecipes/BrowseRecipes";
-//import AddRecipe from "./components/addRecipe/AddRecipe";
 import RecipeDetails from "./components/recipeDetails/RecipeDetails";
 import NavBar from "./components/navbar/NavBar";
-import UploadImage from "./components/uploadImage/UploadImage";
+import UploadRecipe from "./components/uploadRecipe/UploadRecipe";
+import LogIn from "./components/logIn/LogIn";
 
 export const API_URL = process.env.REACT_APP_API_URL;
 
@@ -22,8 +22,8 @@ class App extends Component {
               path="/mediterranean/:mediterraneanId"
               component={RecipeDetails}
             />
-            {/* <Route path="/recipeForm" component={AddRecipe} /> */}
-            <Route path="/recipeForm" component={UploadImage} />
+            <Route path="/recipeForm" component={UploadRecipe} />
+            <Route path="/login" component={LogIn} />
           </Switch>
         </BrowserRouter>
       </>

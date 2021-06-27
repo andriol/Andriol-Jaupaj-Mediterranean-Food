@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const mediterraneanRoutes = require("./routes/mediterranean-simpler");
 const profileRoute = require("./routes/profile");
+const authRoute = require("./routes/auth");
 
 require("dotenv").config();
 const PORT = process.env.PORT || 8081;
@@ -15,6 +16,8 @@ app.use("/public", express.static("public"));
 
 app.use("/mediterranean", mediterraneanRoutes);
 app.use("/profile", profileRoute);
+app.use("/login", authRoute);
+app.use("/profile", authRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

@@ -5,8 +5,6 @@ import SearchBox from "../searchBox/SearchBox";
 import RecipeList from "../recipeList/RecipeList";
 import RecipeDetails from "../recipeDetails/RecipeDetails";
 
-//import AddRecipe from "../addRecipe/AddRecipe";
-
 //`${API_URL}/mediterranean`
 class BrowseRecipes extends Component {
   constructor(props) {
@@ -16,7 +14,6 @@ class BrowseRecipes extends Component {
       selectedRecipe: {},
       searchField: "",
       show: false,
-      //selectedFile: null,
     };
   }
 
@@ -51,25 +48,11 @@ class BrowseRecipes extends Component {
         console.log(err);
       });
   };
-  // imageSelectHandler = (event) => {
-  //   console.log(event.target.files[0]);
-
-  //   this.setState({
-  //     selectedFile: event.target.files[0],
-  //   });
-  // };
-
-  // handleRecipeAdd = () => {
-  //   if (this.state.selectedFile) {
-  //     return <p>{this.state.selectedFile.name}</p>;
-  //   }
-  // };
 
   componentDidMount() {
     this.browseRecipes();
     this.getIndividualRecipe();
   }
-
   render() {
     const { recipes, searchField } = this.state;
     const filteredRecipes = recipes.filter((recipe) =>
@@ -78,24 +61,15 @@ class BrowseRecipes extends Component {
 
     return (
       <div>
-        {/* <Route
-          path="/mediterranean"
-          render={(props) => ( */}
         <SearchBox
           placeholder="Search by country..."
           handleChange={(e) => this.setState({ searchField: e.target.value })}
         />
         <RecipeList
           recipes={filteredRecipes}
-          // {...props}
           handleToggle={this.handleToggle}
         />
-        {/* )}
-        /> */}
-        {/* <SearchBox
-          placeholder="Search by country..."
-          handleChange={(e) => this.setState({ searchField: e.target.value })}
-        /> */}
+
         <Route
           path="/mediterranean/:mediterraneanId"
           render={(props) => (
@@ -109,23 +83,6 @@ class BrowseRecipes extends Component {
             />
           )}
         />
-        {/* <SearchBox
-          placeholder="Search by country..."
-          handleChange={(e) => this.setState({ searchField: e.target.value })}
-        /> */}
-        {/* <Route
-          path="/recipeForm"
-          render={() => (
-            <AddRecipe
-              // imageSelectHandler={this.imageSelectHandler}
-              imageSelectHandler={(e) =>
-                this.setState({ selectedFile: e.target.files[0] })
-              }
-              handleRecipeAdd={this.handleRecipeAdd}
-              selectedFile={this.state.selectedFile}
-            />
-          )}
-        /> */}
       </div>
     );
   }

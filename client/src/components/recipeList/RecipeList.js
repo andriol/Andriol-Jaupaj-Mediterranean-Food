@@ -24,6 +24,10 @@ const RecipeList = ({ recipes, handleToggle }) => {
     </div>
   ));
 
-  return <div className="card">{recipesMarkup}</div>;
+  return (
+    <>
+      <div className="card">{recipesMarkup}</div>
+    </>
+  );
 };
 export default RecipeList;
