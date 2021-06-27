@@ -40,7 +40,6 @@ class LogIn extends Component {
   fetchProfile = () => {
     const token = localStorage.getItem("userToken");
 
-    // pass in token in Authorization HTTP header
     axios
       .get("http://localhost:8081/profile", {
         headers: {

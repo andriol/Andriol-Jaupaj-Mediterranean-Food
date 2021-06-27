@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./SingleRecipeDetails.scss";
-import DeleteRecipe from "../deleteRecipe/DeleteRecipe";
 
 const SingleRecipeDetails = ({ recipe, show, handleToggle }) => {
   const { name, image, country, description, ingredients } = recipe;

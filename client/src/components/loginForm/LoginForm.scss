@@ -49,4 +49,7 @@
 h2 {
   padding-left: 1.3rem;
   font-family: "Avenir Next LT Pro Bold";
+  @include tablet {
+    text-align: center;
+  }
 }
