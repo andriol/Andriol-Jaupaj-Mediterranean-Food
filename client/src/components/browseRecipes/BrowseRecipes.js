@@ -20,33 +20,27 @@ class BrowseRecipes extends Component {
   handleToggle = () => {
     this.setState({ show: !this.state.show });
   };
-
-  browseRecipes = () => {
-    return axios
-      .get("http://localhost:8081/mediterranean")
-      .then((res) => {
-        console.log(res.data[res.data.length - 1]);
-        this.setState({
-          recipes: res.data,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  // async/await
+  browseRecipes = async () => {
+    const response = await fetch("http://localhost:8080/mediterranean");
+    console.log(response);
+    const data = await response.json();
+    console.log(data);
+    this.setState({
+      recipes: data,
+    });
   };
 
-  getIndividualRecipe = (id) => {
-    return axios
-      .get(`http://localhost:8081/mediterranean/${id}`)
-      .then((res) => {
-        console.log(res.data);
-        this.setState({
-          selectedRecipe: res.data,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  getIndividualRecipe = async (mediterraneanId) => {
+    const response = await fetch(
+      `http://localhost:8080/mediterranean/${mediterraneanId}`
+    );
+    console.log(response);
+    const data = await response.json();
+    console.log(data);
+    this.setState({
+      selectedRecipe: data,
+    });
   };
 
   componentDidMount() {

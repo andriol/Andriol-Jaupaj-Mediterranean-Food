@@ -55,7 +55,7 @@ class LogIn extends Component {
         });
       })
       .catch((err) => {
-        console.log("Could not fetch profile", err.response.data);
+        //console.log("Could not fetch profile", err.response.data);
       });
   };
 

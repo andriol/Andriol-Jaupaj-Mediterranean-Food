@@ -10,6 +10,7 @@ function getIndividual(req, res) {
     mediterraneanModel.getIndividual(currMediterraneanId);
   res.status(200).json(currMediterranean);
 }
+
 function createMediterranean(req, res) {
   if (
     !req.body.name ||

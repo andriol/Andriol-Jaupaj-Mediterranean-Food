@@ -38,7 +38,7 @@ const UploadImage = () => {
     axios
       .post("http://localhost:8081/profile", formData, config)
       .then((res) => {
-        console.log(res.data.image);
+        console.log(res.data.image.originalname);
         setRecipe({ ...recipes, image: res.data.image.path });
       })
       .catch((err) => {
@@ -77,10 +77,10 @@ const UploadImage = () => {
           />
           <label className="recipe__form-image">Recipe Image</label>
           <input
-            name="image"
+            name="file"
             className="recipe__form-image--input"
             type="file"
-            accept=".png, .jpg"
+            accept="image/*"
             onChange={onImageChange}
           />
           <label className="recipe__form-description">Recipe description</label>

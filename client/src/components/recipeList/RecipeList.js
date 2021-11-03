@@ -4,8 +4,8 @@ import "./RecipeList.scss";
 
 const RecipeList = ({ recipes, handleToggle }) => {
   const recipesMarkup = recipes.map((recipe) => (
-    <div className="card__wrapper">
-      <div className="card__wrapper-single" key={recipe.id}>
+    <div className="card__wrapper" key={recipe.id}>
+      <div className="card__wrapper-single">
         <Link to={`/mediterranean/${recipe.id}`}>
           <img
             className="card__wrapper__images"
@@ -14,6 +14,7 @@ const RecipeList = ({ recipes, handleToggle }) => {
             alt={recipe.name}
           />
         </Link>
+
         <div className="card__wrapper-detail">
           <div className="card__wrapper-header">
             <div className="card__wrapper-name">{recipe.name}</div>

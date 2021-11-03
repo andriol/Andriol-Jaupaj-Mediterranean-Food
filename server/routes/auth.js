@@ -36,8 +36,12 @@ const users = {
   },
 
   andy: {
-    name: "andy",
+    name: "Andriol Jaupaj",
     password: "345",
+  },
+  candy: {
+    name: "candy",
+    password: "543",
   },
 };
 
