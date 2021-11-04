@@ -16,7 +16,8 @@ function createMediterranean(req, res) {
     !req.body.name ||
     !req.body.country ||
     !req.body.description ||
-    !req.body.ingredients
+    !req.body.ingredients ||
+    !req.file.originalname
   ) {
     res
       .status(400)

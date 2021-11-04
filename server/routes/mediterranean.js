@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const { v4: uuid4 } = require("uuid");
-
+const multer = require("multer");
+const path = require("path");
 const Mediterranean = require("../models/mediterraneanModel");
 
 router.route("/").get((req, res) => {
@@ -24,12 +25,35 @@ router.route("/:mediterraneanId").get((req, res) => {
     })
     .catch((err) => res.send("Error getting recipes data"));
 });
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "public/images/");
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  },
 
-router.route("/").post((req, res) => {
+  //   allowedImage: function (req, file, cb) {
+  //     // Accept images only
+  //     if (!file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)) {
+  //       req.fileValidationError = "Only image files are allowed!";
+  //       return cb(new Error("Only image files are allowed!"), false);
+  //     }
+  //     cb(null, true);
+  //   },
+});
+
+var upload = multer({
+  storage: storage,
+  //allowedImage: allowedImage,
+}).single("file");
+router.post("/", upload, (req, res) => {
+  var imageName = req.file.originalname;
+
   const newRecipe = new Mediterranean({
     name: req.body.name,
     country: req.body.country,
-    image: req.body.image,
+    image: "http://localhost:8080/images/" + imageName,
     description: req.body.description,
     ingredients: req.body.ingredients,
   });
