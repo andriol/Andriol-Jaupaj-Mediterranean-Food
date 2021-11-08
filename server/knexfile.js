@@ -6,7 +6,7 @@ module.exports = {
     connection: {
       host: "127.0.0.1",
       user: "root",
-      password: "andi87KELI",
+      password: "andi78KELI",
       database: "mediterraneanFood",
       charset: "utf8",
       insecureAuth: true,

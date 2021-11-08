@@ -3,22 +3,21 @@ const router = express.Router();
 const { v4: uuid4 } = require("uuid");
 const multer = require("multer");
 const path = require("path");
-const Mediterranean = require("../models/mediterraneanModel");
+const Recipe = require("../models/recipe");
+const User = require("../models/user");
+const auth = require("../middleware/auth");
+router.get("/", (req, res) => {
+  Recipe.fetchAll()
 
-router.route("/").get((req, res) => {
-  Mediterranean.where({ ...req.query })
-    .fetchAll({
-      columns: ["id", "name", "country", "image", "description", "ingredients"],
-    })
     .then((recipes) => {
       res.status(200).json(recipes);
     })
     .catch(() => res.status(400).json({ message: "Error can't get recipes" }));
 });
 
-router.route("/:mediterraneanId").get((req, res) => {
-  Mediterranean.where({ id: req.params.mediterraneanId })
-    .fetch()
+router.get("/:mediterraneanId", (req, res) => {
+  Recipe.where({ id: req.params.mediterraneanId })
+    .fetch({ withRelated: ["user"] })
     .then((recipe) => {
       console.log(recipe);
       res.status(200).json(recipe);
@@ -47,26 +46,38 @@ var upload = multer({
   storage: storage,
   //allowedImage: allowedImage,
 }).single("file");
-router.post("/", upload, (req, res) => {
+router.post("/", upload, auth.auth, (req, res) => {
   var imageName = req.file.originalname;
 
-  const newRecipe = new Mediterranean({
-    name: req.body.name,
-    country: req.body.country,
-    image: "http://localhost:8080/images/" + imageName,
-    description: req.body.description,
-    ingredients: req.body.ingredients,
-  });
-  newRecipe
-    .save()
-    .then((newRecipe) => {
-      res.status(201).json(newRecipe);
+  User.where({ id: req.body.user_id })
+    .fetch()
+    .then(
+      (user) => {
+        console.log("user found");
+
+        return user;
+      },
+      () => res.status(404).json({ message: "user not found" })
+    )
+    .then((user) => {
+      new Recipe({
+        name: req.body.name,
+        country: req.body.country,
+        image: "http://localhost:8080/images/" + imageName,
+        description: req.body.description,
+        ingredients: req.body.ingredients,
+        user_id: user.id,
+      })
+
+        .save()
+        .then((newRecipe) => {
+          res.status(201).json(newRecipe);
+        });
     })
-    .catch(() =>
+    .catch((err) =>
       res.status(400).json({ message: "Error can't create new recipe" })
     );
 });
-
 // router.put("/:mediterraneanId", (req, res) => {
 //   const mediterraneanData = readData();
 //   const currMediterraneanId = req.params.mediterraneanId;

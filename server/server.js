@@ -3,7 +3,9 @@ const app = express();
 const authRoute = require("./routes/auth");
 const cors = require("cors");
 
-const mediterraneanRoute = require("./routes/mediterranean");
+const recipeRoute = require("./routes/recipes");
+const userRoute = require("./routes/users");
+
 require("dotenv").config();
 
 const PORT = process.env.PORT || 8081;
@@ -13,8 +15,9 @@ app.use(cors());
 
 app.use(express.static("public"));
 
-app.use("/mediterranean", mediterraneanRoute);
-app.use("/login", authRoute);
+app.use("/mediterranean", recipeRoute);
+app.use("/user", userRoute);
+//app.use("/login", authRoute);
 //app.use("/profile", authRoute);
 
 app.listen(PORT, () => {

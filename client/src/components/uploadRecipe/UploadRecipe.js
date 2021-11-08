@@ -1,7 +1,6 @@
 import React, { useState, Route, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-//import AddRecipe from "../addRecipe/AddRecipe";
 import "./UploadRecipe.scss";
 
 const UploadRecipe = () => {
@@ -10,11 +9,38 @@ const UploadRecipe = () => {
   const [country, setCountry] = useState("");
   const [description, setDescription] = useState("");
   const [ingredients, setIngredients] = useState("");
+  const [userId, setUserId] = useState(null);
+  const [userInfo, setUserInfo] = useState({});
 
   const saveFile = (e) => {
     setFile(e.target.files[0]);
   };
+  const authToken = sessionStorage.getItem("authToken");
 
+  //
+  const reqOptions = {
+    headers: {
+      authorization: `Bearer ${authToken}`,
+    },
+  };
+
+  const getProfile = async () => {
+    const response = await fetch(
+      "http://localhost:8080/user/profile",
+      reqOptions
+    );
+    console.log(response);
+
+    const userInfo = await response.json();
+
+    setUserId(userInfo.id);
+    console.log(userInfo.id);
+  };
+  useEffect(() => {
+    getProfile();
+  }, []);
+  //
+  console.log(authToken);
   const uploadFile = async (e) => {
     const formData = new FormData();
     formData.append("file", file);
@@ -22,10 +48,14 @@ const UploadRecipe = () => {
     formData.append("country", country);
     formData.append("description", description);
     formData.append("ingredients", ingredients);
+    formData.append("user_id", userId);
     try {
       const res = await axios.post(
         "http://localhost:8080/mediterranean",
-        formData
+        formData,
+        {
+          headers: { Authorization: `Bearer ${authToken}` },
+        }
       );
       console.log(res.data);
     } catch (ex) {
@@ -83,6 +113,11 @@ const UploadRecipe = () => {
             type="text"
             placeholder="recipe ingredients"
             onChange={(e) => setIngredients(e.target.value)}
+          />
+          <input
+            className="user_info-id"
+            name="user_id"
+            onChange={userInfo.id}
           />
           <div className="recipe__form-buttons">
             <button

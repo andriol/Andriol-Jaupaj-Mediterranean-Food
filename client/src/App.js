@@ -5,8 +5,8 @@ import BrowseRecipes from "./components/browseRecipes/BrowseRecipes";
 import RecipeDetails from "./components/recipeDetails/RecipeDetails";
 import NavBar from "./components/navbar/NavBar";
 import UploadRecipe from "./components/uploadRecipe/UploadRecipe";
-import LogIn from "./components/logIn/LogIn";
-
+import LogIn from "./components/loginForm/LoginForm";
+import ProfileData from "./components/profileData/ProfileData";
 export const API_URL = process.env.REACT_APP_API_URL;
 
 class App extends Component {
@@ -25,6 +25,7 @@ class App extends Component {
             />
             <Route path="/recipeForm" component={UploadRecipe} />
             <Route path="/login" component={LogIn} />
+            <Route path="/profile" component={ProfileData} />
           </Switch>
         </BrowserRouter>
       </>

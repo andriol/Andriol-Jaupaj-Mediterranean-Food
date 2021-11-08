@@ -3,14 +3,14 @@ import "./SideDrawer.scss";
 
 const SideDrawer = (props) => {
   console.log(props);
-  let drawerClasses = ["side-drawer"];
+  let drawerclassNamees = ["side-drawer"];
 
   if (props.showSideDrawer) {
-    drawerClasses = ["side-drawer", "open"];
+    drawerclassNamees = ["side-drawer", "open"];
   }
 
   return (
-    <nav className={drawerClasses.join(" ")}>
+    <nav className={drawerclassNamees.join(" ")}>
       <ul>
         <li>
           <a href="/">Home</a>

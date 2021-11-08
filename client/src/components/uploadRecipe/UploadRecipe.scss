@@ -1,6 +1,6 @@
-@use '../../partials/mixin' as *;
-@use '../../partials/typography' as *;
-@use '../../partials/colors' as *;
+@use "../../partials/mixin" as *;
+@use "../../partials/typography" as *;
+@use "../../partials/colors" as *;
 
 *,
 *::after,
@@ -64,4 +64,7 @@
   border: 1px solid $dark_gray;
   padding: 8px 0 8px 16px;
   box-sizing: border-box;
+}
+.user_info-id {
+  display: none;
 }

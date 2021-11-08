@@ -1,19 +1,42 @@
-import React from "react";
+import React, { useState, useEffect, Link } from "react";
 import "./ProfileData.scss";
 
-const ProfileData = ({ profile, onLogout }) => {
-  return (
+const ProfileData = ({ onAuthFail }) => {
+  console.log(onAuthFail);
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [userInfo, setUserInfo] = useState({});
+  const authToken = sessionStorage.getItem("authToken");
+
+  const reqOptions = {
+    headers: {
+      authorization: `Bearer ${authToken}`,
+    },
+  };
+
+  const getProfile = async () => {
+    const response = await fetch(
+      "http://localhost:8080/user/profile",
+      reqOptions
+    );
+    console.log(response);
+
+    const userInfo = await response.json();
+
+    setUserInfo(userInfo);
+    console.log(userInfo);
+  };
+  useEffect(() => {
+    getProfile();
+    setIsLoading(false);
+  }, []);
+
+  return isLoading ? (
+    <h1>Loading...please wait</h1>
+  ) : (
     <>
-      <div className="profile__data">
-        <h2> Your Profile </h2>
-        <h3>Welcome, {profile.tokenInfo.name}</h3>
-        <h3>Login Username: {profile.tokenInfo.username}</h3>
-        {/* <h4>Performance Level: {profile.accountInfo.performanceLevel}</h4>
-      <h4>Review Date: {profile.accountInfo.reviewDate}</h4> */}
-        <button className="logout__button" onClick={onLogout}>
-          Logout
-        </button>
-      </div>
+      <div>{userInfo.username}</div>
+      <div>{userInfo.email}</div>
     </>
   );
 };
