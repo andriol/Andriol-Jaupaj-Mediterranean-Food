@@ -5,6 +5,7 @@ const path = require("path");
 const Recipe = require("../models/recipe");
 const User = require("../models/user");
 const auth = require("../middleware/auth");
+const uploadImage = require("../middleware/uploadImage");
 
 router.get("/", (req, res) => {
   Recipe.fetchAll()
@@ -24,28 +25,12 @@ router.get("/:mediterraneanId", (req, res) => {
     })
     .catch((err) => res.send("Error getting recipes data"));
 });
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "public/images/");
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  },
-
-  //   allowedImage: function (req, file, cb) {
-  //     // Accept images only
-  //     if (!file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)) {
-  //       req.fileValidationError = "Only image files are allowed!";
-  //       return cb(new Error("Only image files are allowed!"), false);
-  //     }
-  //     cb(null, true);
-  //   },
-});
 
 var upload = multer({
-  storage: storage,
-  //allowedImage: allowedImage,
+  storage: uploadImage.image.storage(),
+  fileFilter: uploadImage.image.fileFilter,
 }).single("file");
+
 router.post("/", upload, auth.auth, (req, res) => {
   var imageName = req.file.originalname;
 

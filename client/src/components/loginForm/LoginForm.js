@@ -24,6 +24,11 @@ const LoginForm = () => {
       .then((res) => {
         sessionStorage.setItem("authToken", res.authToken);
       });
+
+    setUsername("");
+    setPassword("");
+    setEmail("");
+    alert("Congrats.you are now register!");
   };
   const loginData = { email, password };
   const requestOptionsLogin = {
@@ -40,6 +45,9 @@ const LoginForm = () => {
         console.log(res);
         sessionStorage.setItem("authToken", res.authToken);
       });
+    alert("you are now logged in!");
+    setEmail("");
+    setPassword("");
   };
 
   useEffect(() => {

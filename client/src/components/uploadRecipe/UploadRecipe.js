@@ -58,6 +58,7 @@ const UploadRecipe = () => {
         }
       );
       console.log(res.data);
+      alert("your recipe was uploaded");
     } catch (ex) {
       console.log(ex);
     }
