@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const authRoute = require("./routes/auth");
 const cors = require("cors");
 
 const recipeRoute = require("./routes/recipes");
@@ -17,8 +16,6 @@ app.use(express.static("public"));
 
 app.use("/mediterranean", recipeRoute);
 app.use("/user", userRoute);
-//app.use("/login", authRoute);
-//app.use("/profile", authRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

@@ -4,32 +4,9 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const SALT_ROUNDS = 10;
 const auth = require("../middleware/auth");
+const validation = require("../middleware/users");
 
-router.get("/", (req, res) => {
-  User.where({ ...req.query })
-    .fetchAll({
-      colums: ["id", "username", "password", "email"],
-    })
-    .then((user) => {
-      res.status(200).json(user);
-    })
-    .catch(() => {
-      res.status(400).json({ message: "user not found" });
-    });
-});
-
-// router.get("/:id", auth.auth, (req, res) => {
-//   User.where({ id: req.params.id })
-//     .fetch({ withRelated: ["recipes"] })
-//     .then((user) => {
-//       res.status(200).json(user);
-//     })
-//     .catch((err) => {
-//       res.status(400).json({ message: "can't get user" });
-//     });
-// });
-
-router.post("/register", (req, res) => {
+router.post("/register", validation.validateUser, (req, res) => {
   const { password } = req.body;
   bcrypt.hash(
     password,
@@ -48,7 +25,6 @@ router.post("/register", (req, res) => {
       newUser
         .save()
         .then((newUser) => {
-          console.log(newUser.attributes.id);
           const token = auth.signJWTToken(newUser);
           res.status(201).json({ authToken: token, id: newUser.attributes.id });
         })
@@ -65,7 +41,7 @@ router.post("/login", (req, res) => {
   User.where({ email })
     .fetch()
     .then((user) => {
-      console.log("user", user.attributes.id);
+      console.log("user", user.attributes.email);
       bcrypt.compare(
         password,
         user.attributes.password,
@@ -91,7 +67,7 @@ router.post("/login", (req, res) => {
 
 router.get("/profile", auth.auth, (req, res) => {
   User.where({ id: req.decoded.id })
-    .fetch()
+    .fetch({ withRelated: ["recipes"] })
     .then((user) => {
       res.status(200).json(user);
     })

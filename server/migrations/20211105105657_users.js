@@ -4,7 +4,7 @@ exports.up = function (knex) {
       table.increments("id").primary();
       table.string("username").notNullable();
       table.string("password").notNullable();
-      table.string("email").notNullable();
+      table.string("email").notNullable().unique();
       table.timestamp("updated_at").defaultTo(knex.fn.now());
     })
     .createTable("recipes", (table) => {
