@@ -63,7 +63,7 @@ router.post("/", upload, auth.auth, (req, res) => {
       res.status(400).json({ message: "Error can't create new recipe" })
     );
 });
-router.put("/:id", upload, auth.auth, (req, res) => {
+router.put("/:id", upload, (req, res) => {
   var imageName = req.file.originalname;
 
   Recipe.where({ id: req.params.id })
