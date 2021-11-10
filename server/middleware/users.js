@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 
 module.exports = {
   validateUser: (req, res, next) => {
-    if (req.body.username.length < 6) {
+    if (req.body.username.length < 3) {
       return res.status(400).json({
         messsage: "Username must be at least 3 characters",
       });

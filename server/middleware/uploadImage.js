@@ -1,4 +1,3 @@
-const { response } = require("express");
 var multer = require("multer");
 
 module.exports.image = {
@@ -9,7 +8,6 @@ module.exports.image = {
       },
       filename: function (req, file, cb) {
         cb(null, file.originalname);
-        console.log(file.mimetype);
       },
     });
     return storage;

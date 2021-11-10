@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
-const path = require("path");
 const Recipe = require("../models/recipe");
 const User = require("../models/user");
 const auth = require("../middleware/auth");
@@ -16,8 +15,8 @@ router.get("/", (req, res) => {
     .catch(() => res.status(400).json({ message: "Error can't get recipes" }));
 });
 
-router.get("/:mediterraneanId", (req, res) => {
-  Recipe.where({ id: req.params.mediterraneanId })
+router.get("/:id", (req, res) => {
+  Recipe.where({ id: req.params.id })
     .fetch({ withRelated: ["user"] })
     .then((recipe) => {
       console.log(recipe);
@@ -33,6 +32,7 @@ var upload = multer({
 
 router.post("/", upload, auth.auth, (req, res) => {
   var imageName = req.file.originalname;
+  console.log(imageName);
 
   User.where({ id: req.body.user_id })
     .fetch()
@@ -63,32 +63,41 @@ router.post("/", upload, auth.auth, (req, res) => {
       res.status(400).json({ message: "Error can't create new recipe" })
     );
 });
-// router.put("/:mediterraneanId", (req, res) => {
-//   const mediterraneanData = readData();
-//   const currMediterraneanId = req.params.mediterraneanId;
-//   let updatedMed;
-//   const updatedMediterannean = mediterraneanData.map((med) => {
-//     if (med.id === currMediterraneanId) {
-//       updatedMed = {
-//         id: med.id,
-//         ...req.body,
-//       };
-//       return updatedMed;
-//     } else {
-//       return med;
-//     }
-//   });
-//   writeData(updatedMediterannean);
-//   res.status(200).json(updatedMed);
-// });
-// router.delete("/:mediterraneanId", (req, res) => {
-//   const mediterraneanData = readData();
-//   const currMediterraneanId = req.params.mediterraneanId;
-//   const filteredMed = mediterraneanData.filter(
-//     (med) => med.id !== currMediterraneanId
-//   );
-//   writeData(filteredMed);
-//   res.status(204).json({ status: "Done" });
-// });
+router.put("/:id", upload, auth.auth, (req, res) => {
+  var imageName = req.file.originalname;
+
+  Recipe.where({ id: req.params.id })
+    .fetch()
+    .then((recipe) => {
+      console.log(recipe);
+      recipe
+        .save({
+          name: req.body.name,
+          country: req.body.country,
+          image: "http://localhost:8080/images/" + imageName,
+          description: req.body.description,
+          ingredients: req.body.ingredients,
+        })
+        .then((updatedRecipe) => {
+          res.status(200).json(updatedRecipe);
+        })
+        .catch(() => {
+          res.status(400).json({ message: "Error, can't update recipe" });
+        });
+    });
+});
+
+router.delete("/:id", (req, res) => {
+  Recipe.where({ id: req.params.id })
+    .destroy()
+    .then(() => {
+      res.status(200).json({
+        message: `Recipe with id ${req.params.id} was removed successfully`,
+      });
+    })
+    .catch(() =>
+      res.status(400).json({ message: "Error, can't delete recipe" })
+    );
+});
 
 module.exports = router;
