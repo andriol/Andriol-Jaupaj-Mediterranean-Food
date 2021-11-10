@@ -24,6 +24,7 @@
     border: 1px solid $light_gray;
     margin: 16px;
     border-radius: 15px;
+    background-image: url("../../assets/images/mediterranean-restaurants.png");
   }
 }
 .profile_wrapper {
@@ -31,4 +32,90 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+  margin-bottom: 2rem;
+  &-title {
+    margin: 20px;
+    font-family: "Dancing Script Bold";
+    @include typeKit(1.8rem, 600, 0, $black_color, 0);
+  }
+}
+.recipe__wrapper-edit {
+  width: 90px;
+  height: 36px;
+  background-color: #5388b4;
+  border-radius: 20px;
+  border: 1px solid $light_gray;
+  color: $white_color;
+  opacity: 0.8;
+}
+.recipe__wrapper-delete {
+  width: 90px;
+  height: 36px;
+  background-color: red;
+  border-radius: 20px;
+  border: 1px solid $light_gray;
+  color: $white_color;
+  margin: 1rem;
+  opacity: 0.8;
+}
+.recipe__wrapper-logout {
+  width: 110px;
+  height: 36px;
+  background-color: orangered;
+  border-radius: 20px;
+  border: 1px solid $light_gray;
+  color: $white_color;
+  margin: 2rem;
+  float: right;
+}
+.recipe__wrapper-edit:hover {
+  opacity: 1;
+}
+.recipe__wrapper-delete:hover {
+  opacity: 1;
+}
+.recipe__wrapper-title {
+  margin: 3rem;
+  font-family: "Dancing Script Bold";
+  @include typeKit(1.8rem, 600, 0, $black_color, 0);
+}
+.recipe {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  //margin: 20px;
+  //background-color: $light_gray;
+  &__wrapper-single {
+    padding: 20px;
+    background-color: $white_color;
+    border: 1px solid $light_gray;
+    margin: 16px;
+    border-radius: 15px;
+  }
+  &__wrapper-name {
+    width: 400px;
+    margin-top: 20px;
+    font-family: "Dancing Script Semibold";
+    @include typeKit(1.2rem, 600, 0, 0, 0);
+    @include tablet {
+      width: 300px;
+      @include typeKit(0.9rem, 400, 0, 0, 0);
+    }
+  }
+  &__wrapper-country {
+    padding-top: 20px;
+    font-family: "Avenir Next LT Pro Demi";
+  }
+}
+.profile_wrapper-username,
+.profile_wrapper-email {
+  font-family: "Avenir Next LT Pro Demi";
+}
+.profile_wrapper-avatar {
+  min-width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: gray;
+  margin-top: 2rem;
 }

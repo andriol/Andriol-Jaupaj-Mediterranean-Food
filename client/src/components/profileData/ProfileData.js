@@ -2,11 +2,9 @@ import React, { useState, useEffect, Link } from "react";
 import "./ProfileData.scss";
 
 const ProfileData = ({ onAuthFail }) => {
-  console.log(onAuthFail);
-
   const [isLoading, setIsLoading] = useState(true);
   const [userInfo, setUserInfo] = useState({});
-  const [recipeName, setRecipeName] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const authToken = sessionStorage.getItem("authToken");
 
   const reqOptions = {
@@ -25,30 +23,76 @@ const ProfileData = ({ onAuthFail }) => {
     const userInfo = await response.json();
 
     setUserInfo(userInfo);
-    console.log(userInfo);
   };
-  console.log(userInfo.recipes);
+
   useEffect(() => {
     getProfile();
     setIsLoading(false);
   }, []);
+  // delete recipe
+  const requestOptions = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: null,
+  };
+  const deleteRecipe = async (id) => {
+    const response = await fetch(
+      `http://localhost:8080/mediterranean/${id}`,
+      requestOptions
+    );
+
+    const deletedRecipe = await response.json();
+    console.log(deletedRecipe);
+    window.location.reload();
+    return false;
+  };
+  // update recipe
+  const requestOptionsEdit = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: null,
+  };
+  const editRecipe = async (id) => {
+    const response = await fetch(
+      `http://localhost:8080/mediterranean/${id}`,
+      requestOptionsEdit
+    );
+    console.log(response);
+    const editedRecipe = await response.json();
+    console.log(editedRecipe);
+  };
+  //logout
+  function handleAuthFail() {
+    sessionStorage.removeItem("authToken");
+    setIsLoggedIn(false);
+    window.location.reload();
+    return false;
+  }
 
   return isLoading ? (
     <h1>Loading...please wait</h1>
   ) : (
     <>
       <div className="profile_wrapper">
+        <img className="profile_wrapper-avatar" />
         <h1 className="profile_wrapper-title">Profile</h1>
         <div className="profile_wrapper-username" key={userInfo.id}>
-          Username: {userInfo.username}
+          <div>Username: {userInfo.username}</div>
         </div>
-        <div className="profile_wrapper-email">Email: {userInfo.email}</div>
+        <div className="profile_wrapper-email">
+          <div className="profile_wrapper--email">Email: {userInfo.email}</div>
+        </div>
       </div>
-      <h1>Your Recipes:</h1>
+      <h1 className="recipe__wrapper-title">Your Recipes:</h1>
       <div className="recipe">
         {userInfo.recipes &&
-          userInfo.recipes.map((cake) => {
-            const { id, name, country, image, description, ingredients } = cake;
+          userInfo.recipes.map((recipe) => {
+            const { id, name, country, image, description, ingredients } =
+              recipe;
 
             return (
               <>
@@ -72,12 +116,36 @@ const ProfileData = ({ onAuthFail }) => {
                         </div>
                       </div>
                     </div>
+                    <div className="recipe__wrapper-buttons ">
+                      <button
+                        className="recipe__wrapper-edit btn btn-info"
+                        type="submit"
+                        // you pass this to another form where you can edit the info
+                        onClick={() => editRecipe(id)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="recipe__wrapper-delete btn btn-danger"
+                        type="submit"
+                        onClick={() => deleteRecipe(id)}
+                      >
+                        Delete
+                      </button>
+                    </div>
                   </div>
                 </div>
               </>
             );
           })}
       </div>
+      <button
+        className="recipe__wrapper-logout"
+        type="submit"
+        onClick={handleAuthFail}
+      >
+        Sign out
+      </button>
     </>
   );
 };

@@ -17,7 +17,6 @@ const UploadRecipe = () => {
   };
   const authToken = sessionStorage.getItem("authToken");
 
-  //
   const reqOptions = {
     headers: {
       authorization: `Bearer ${authToken}`,
@@ -34,12 +33,11 @@ const UploadRecipe = () => {
     const userInfo = await response.json();
 
     setUserId(userInfo.id);
-    console.log(userInfo.id);
   };
   useEffect(() => {
     getProfile();
   }, []);
-  //
+
   console.log(authToken);
   const uploadFile = async (e) => {
     const formData = new FormData();

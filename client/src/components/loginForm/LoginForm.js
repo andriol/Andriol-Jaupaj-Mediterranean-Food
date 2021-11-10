@@ -8,7 +8,7 @@ const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-
+  // register
   const data = { username, password, email };
   const requestOptions = {
     method: "POST",
@@ -30,6 +30,7 @@ const LoginForm = () => {
     setEmail("");
     alert("Congrats.you are now register!");
   };
+  //login
   const loginData = { email, password };
   const requestOptionsLogin = {
     method: "POST",
@@ -48,6 +49,8 @@ const LoginForm = () => {
     alert("you are now logged in!");
     setEmail("");
     setPassword("");
+    window.location.reload();
+    return false;
   };
 
   useEffect(() => {
@@ -56,10 +59,7 @@ const LoginForm = () => {
       setIsLoggedIn(true);
     }
   }, []);
-  function handleAuthFail() {
-    sessionStorage.removeItem("authToken");
-    setIsLoggedIn(false);
-  }
+
   return (
     <>
       {!isLoggedIn && (
@@ -179,7 +179,7 @@ const LoginForm = () => {
           </div>
         </div>
       )}
-      {isLoggedIn && <ProfileData onAuthFail={handleAuthFail} />}
+      {isLoggedIn && <ProfileData />}
     </>
   );
 };
