@@ -28,6 +28,7 @@ const EditRecipeModal = ({ show, onClose, singleItem }) => {
       requestOptionsEdit
     );
     const editedRecipe = await response.json();
+    alert("Your recipe was saved!");
     console.log(editedRecipe);
   };
   useEffect(() => {

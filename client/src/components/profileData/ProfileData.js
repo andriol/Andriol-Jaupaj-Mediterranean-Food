@@ -60,23 +60,7 @@ const ProfileData = ({ onAuthFail }) => {
     window.location.reload();
     return false;
   };
-  // update recipe
-  // const requestOptionsEdit = {
-  //   method: "PUT",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: null,
-  // };
-  // const editRecipe = async (id) => {
-  //   const response = await fetch(
-  //     `http://localhost:8080/mediterranean/${id}`,
-  //     requestOptionsEdit
-  //   );
-  //   console.log(response);
-  //   const editedRecipe = await response.json();
-  //   console.log(editedRecipe);
-  // };
+
   //logout
   function handleAuthFail() {
     sessionStorage.removeItem("authToken");
@@ -132,8 +116,6 @@ const ProfileData = ({ onAuthFail }) => {
                       <button
                         className="recipe__wrapper-edit btn btn-info"
                         type="submit"
-                        // you pass this to another form where you can edit the info
-                        //onClick={() => setShowModal(true)}
                         onClick={() => getRecipe(id)}
                       >
                         Edit
@@ -154,7 +136,6 @@ const ProfileData = ({ onAuthFail }) => {
         <EditRecipeModal
           show={showModal}
           onClose={() => setShowModal(false)}
-          getRecipe={getRecipe}
           singleItem={singleItem}
         />
       </div>
