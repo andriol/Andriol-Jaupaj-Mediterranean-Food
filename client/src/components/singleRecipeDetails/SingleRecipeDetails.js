@@ -3,6 +3,7 @@ import "./SingleRecipeDetails.scss";
 
 const SingleRecipeDetails = ({ recipe, show, handleToggle }) => {
   const { name, image, country, description, ingredients } = recipe;
+  console.log(recipe);
 
   return (
     <>

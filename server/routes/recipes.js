@@ -64,7 +64,7 @@ router.post("/", upload, auth.auth, (req, res) => {
     );
 });
 router.put("/:id", upload, (req, res) => {
-  var imageName = req.file.originalname;
+  //var imageName = req.file.originalname;
 
   Recipe.where({ id: req.params.id })
     .fetch()
@@ -74,7 +74,7 @@ router.put("/:id", upload, (req, res) => {
         .save({
           name: req.body.name,
           country: req.body.country,
-          image: "http://localhost:8080/images/" + imageName,
+          //image: "http://localhost:8080/images/" + imageName,
           description: req.body.description,
           ingredients: req.body.ingredients,
         })

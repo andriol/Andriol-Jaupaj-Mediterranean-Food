@@ -79,6 +79,7 @@ const UploadRecipe = () => {
             className="recipe__form-name--input"
             type="text"
             placeholder="Add recipe name"
+            autoComplete="off"
             onChange={(e) => setName(e.target.value)}
           />
           <label className="recipe__form-country">Country</label>
@@ -86,6 +87,7 @@ const UploadRecipe = () => {
             name="country"
             className="recipe__form-country--input"
             type="text"
+            autoComplete="off"
             placeholder="Country of origin"
             onChange={(e) => setCountry(e.target.value)}
           />
@@ -102,6 +104,7 @@ const UploadRecipe = () => {
             name="description"
             className="recipe__form-description--input"
             type="text"
+            autoComplete="off"
             placeholder="recipe description"
             onChange={(e) => setDescription(e.target.value)}
           />
@@ -110,6 +113,7 @@ const UploadRecipe = () => {
             name="ingredients"
             className="recipe__form-ingredients--input"
             type="text"
+            autoComplete="off"
             placeholder="recipe ingredients"
             onChange={(e) => setIngredients(e.target.value)}
           />

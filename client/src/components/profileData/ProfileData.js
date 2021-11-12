@@ -1,12 +1,24 @@
 import React, { useState, useEffect, Link } from "react";
+import EditRecipeModal from "../EditRecipeModal/EditRecipeModal";
 import "./ProfileData.scss";
-
+const url = "http://localhost:8080/mediterranean/";
 const ProfileData = ({ onAuthFail }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [userInfo, setUserInfo] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [singleItem, setSingleItem] = useState({});
   const authToken = sessionStorage.getItem("authToken");
 
+  // get recipe
+  const getRecipe = async (id) => {
+    const response = await fetch(`http://localhost:8080/mediterranean/${id}`);
+    console.log(response);
+    const item = await response.json();
+    console.log(item);
+    setSingleItem(item);
+    setShowModal(true);
+  };
   const reqOptions = {
     headers: {
       authorization: `Bearer ${authToken}`,
@@ -49,22 +61,22 @@ const ProfileData = ({ onAuthFail }) => {
     return false;
   };
   // update recipe
-  const requestOptionsEdit = {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: null,
-  };
-  const editRecipe = async (id) => {
-    const response = await fetch(
-      `http://localhost:8080/mediterranean/${id}`,
-      requestOptionsEdit
-    );
-    console.log(response);
-    const editedRecipe = await response.json();
-    console.log(editedRecipe);
-  };
+  // const requestOptionsEdit = {
+  //   method: "PUT",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: null,
+  // };
+  // const editRecipe = async (id) => {
+  //   const response = await fetch(
+  //     `http://localhost:8080/mediterranean/${id}`,
+  //     requestOptionsEdit
+  //   );
+  //   console.log(response);
+  //   const editedRecipe = await response.json();
+  //   console.log(editedRecipe);
+  // };
   //logout
   function handleAuthFail() {
     sessionStorage.removeItem("authToken");
@@ -121,7 +133,8 @@ const ProfileData = ({ onAuthFail }) => {
                         className="recipe__wrapper-edit btn btn-info"
                         type="submit"
                         // you pass this to another form where you can edit the info
-                        onClick={() => editRecipe(id)}
+                        //onClick={() => setShowModal(true)}
+                        onClick={() => getRecipe(id)}
                       >
                         Edit
                       </button>
@@ -138,6 +151,12 @@ const ProfileData = ({ onAuthFail }) => {
               </>
             );
           })}
+        <EditRecipeModal
+          show={showModal}
+          onClose={() => setShowModal(false)}
+          getRecipe={getRecipe}
+          singleItem={singleItem}
+        />
       </div>
       <button
         className="recipe__wrapper-logout"
