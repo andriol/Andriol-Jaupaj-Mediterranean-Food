@@ -1,13 +1,16 @@
-import React, { useState, useEffect, Link } from "react";
+import React, { useState, useEffect } from "react";
 import EditRecipeModal from "../EditRecipeModal/EditRecipeModal";
 import "./ProfileData.scss";
+
 const url = "http://localhost:8080/mediterranean/";
-const ProfileData = ({ onAuthFail }) => {
+
+const ProfileData = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [userInfo, setUserInfo] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [singleItem, setSingleItem] = useState({});
+
   const authToken = sessionStorage.getItem("authToken");
 
   // get recipe
@@ -73,10 +76,10 @@ const ProfileData = ({ onAuthFail }) => {
     <h1>Loading...please wait</h1>
   ) : (
     <>
-      <div className="profile_wrapper">
+      <div className="profile_wrapper" key={userInfo.id}>
         <img className="profile_wrapper-avatar" />
         <h1 className="profile_wrapper-title">Profile</h1>
-        <div className="profile_wrapper-username" key={userInfo.id}>
+        <div className="profile_wrapper-username">
           <div>Username: {userInfo.username}</div>
         </div>
         <div className="profile_wrapper-email">
@@ -139,13 +142,15 @@ const ProfileData = ({ onAuthFail }) => {
           singleItem={singleItem}
         />
       </div>
-      <button
-        className="recipe__wrapper-logout"
-        type="submit"
-        onClick={handleAuthFail}
-      >
-        Sign out
-      </button>
+      <div>
+        <button
+          className="recipe__wrapper-logout"
+          type="submit"
+          onClick={handleAuthFail}
+        >
+          Sign out
+        </button>
+      </div>
     </>
   );
 };

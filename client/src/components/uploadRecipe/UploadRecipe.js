@@ -57,6 +57,7 @@ const UploadRecipe = () => {
       );
       console.log(res.data);
       alert("your recipe was uploaded");
+      window.location.reload();
     } catch (ex) {
       console.log(ex);
     }
@@ -120,6 +121,7 @@ const UploadRecipe = () => {
           <input
             className="user_info-id"
             name="user_id"
+            type="hidden"
             onChange={userInfo.id}
           />
           <div className="recipe__form-buttons">

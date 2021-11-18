@@ -6,9 +6,8 @@ import "./Toolbar.scss";
 const Toolbar = (props) => (
   <header className="header">
     <nav className="header__nav">
-      <div className="header__toggle-btn">
-        <SideMenu click={props.drawerToggle} />
-      </div>
+      <div className="header__toggle-btn"></div>
+      <SideMenu click={props.drawerToggle} />
       <Link to="/">
         <div className="header__main-title">Mediterranean Food</div>
       </Link>

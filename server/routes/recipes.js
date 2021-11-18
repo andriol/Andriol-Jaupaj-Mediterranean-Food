@@ -19,7 +19,7 @@ router.get("/:id", (req, res) => {
   Recipe.where({ id: req.params.id })
     .fetch({ withRelated: ["user"] })
     .then((recipe) => {
-      console.log(recipe);
+      //console.log(recipe);
       res.status(200).json(recipe);
     })
     .catch((err) => res.send("Error getting recipes data"));

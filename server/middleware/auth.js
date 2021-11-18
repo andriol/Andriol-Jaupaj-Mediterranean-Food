@@ -11,7 +11,7 @@ const auth = async (req, res, next) => {
 
     req.token = token;
     req.decoded = decoded;
-    console.log(req.decoded);
+    console.log(req.decoded.id);
 
     next();
   } catch (err) {

@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ProfileData from "../profileData/ProfileData";
 import "./LoginForm.scss";
@@ -8,6 +8,7 @@ const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+
   // register
   const data = { username, password, email };
   const requestOptions = {
@@ -43,19 +44,19 @@ const LoginForm = () => {
     fetch("http://localhost:8080/user/login", requestOptionsLogin)
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         sessionStorage.setItem("authToken", res.authToken);
       });
-    alert("you are now logged in!");
+    alert("redirecting...");
     setEmail("");
     setPassword("");
+
     window.location.reload();
     return false;
   };
 
   useEffect(() => {
     const authToken = sessionStorage.getItem("authToken");
-    if (authToken) {
+    if (authToken && authToken !== "undefined") {
       setIsLoggedIn(true);
     }
   }, []);
@@ -67,17 +68,17 @@ const LoginForm = () => {
           <div className="login-wrap">
             <div className="login-html">
               <input id="tab-1" type="radio" name="tab" className="sign-in" />
-              <label for="tab-1" className="tab">
+              <label htmlFor="tab-1" className="tab">
                 Sign In
               </label>
               <input id="tab-2" type="radio" name="tab" className="sign-up" />
-              <label for="tab-2" className="tab">
+              <label htmlFor="tab-2" className="tab">
                 Sign Up
               </label>
               <div className="login-form">
                 <div className="sign-in-htm">
                   <div className="group">
-                    <label for="user" className="label">
+                    <label htmlFor="user" className="label">
                       Email
                     </label>
                     <input
@@ -89,7 +90,7 @@ const LoginForm = () => {
                     />
                   </div>
                   <div className="group">
-                    <label for="pass" className="label">
+                    <label htmlFor="pass" className="label">
                       Password
                     </label>
                     <input
@@ -103,7 +104,7 @@ const LoginForm = () => {
                   </div>
                   <div className="group">
                     <input id="check" type="checkbox" className="check" />
-                    <label for="check">
+                    <label htmlFor="check">
                       <span className="icon"></span> Keep me Signed in
                     </label>
                   </div>
@@ -124,7 +125,7 @@ const LoginForm = () => {
                 </div>
                 <div className="sign-up-htm">
                   <div className="group">
-                    <label for="user" className="label">
+                    <label htmlFor="user" className="label">
                       Username
                     </label>
                     <input
@@ -136,7 +137,7 @@ const LoginForm = () => {
                     />
                   </div>
                   <div className="group">
-                    <label for="pass" className="label">
+                    <label htmlFor="pass" className="label">
                       Password
                     </label>
                     <input
@@ -150,7 +151,7 @@ const LoginForm = () => {
                   </div>
 
                   <div className="group">
-                    <label for="pass" className="label">
+                    <label htmlFor="pass" className="label">
                       Email Address
                     </label>
                     <input
@@ -171,7 +172,7 @@ const LoginForm = () => {
                   </div>
                   <div className="hr"></div>
                   <div className="foot-lnk">
-                    <label for="tab-1">Already Member?</label>
+                    <label htmlFor="tab-1">Already Member?</label>
                   </div>
                 </div>
               </div>

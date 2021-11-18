@@ -15,7 +15,7 @@ router.post("/register", validation.validateUser, (req, res) => {
     (err, hashedPassword) => {
       if (err)
         return res.status(500).json({ message: "couldn't encrypt password" });
-      console.log(hashedPassword);
+
       const newUser = new User({
         username: req.body.username,
         email: req.body.email,
@@ -41,7 +41,7 @@ router.post("/login", (req, res) => {
   User.where({ email })
     .fetch()
     .then((user) => {
-      console.log("user", user.attributes.email);
+      console.log(user);
       bcrypt.compare(
         password,
         user.attributes.password,

@@ -15,13 +15,12 @@ export default class RecipeDetails extends Component {
   }
 
   render() {
-    const { show, handleToggle, handleDelete } = this.props;
-    console.log(show, handleToggle);
+    const { show, handleToggle } = this.props;
+    console.log(this.props);
 
     return (
       <div>
         <SingleRecipeDetails
-          handleDelete={handleDelete}
           recipe={this.props.recipe}
           show={show}
           handleToggle={handleToggle}

@@ -1,6 +1,6 @@
-@use '../../partials/mixin' as *;
-@use '../../partials/typography' as *;
-@use '../../partials/colors' as *;
+@use "../../partials/mixin" as *;
+@use "../../partials/typography" as *;
+@use "../../partials/colors" as *;
 
 *,
 *::after,
@@ -85,5 +85,20 @@
     @include tablet {
       margin-left: 20px;
     }
+  }
+  &-username {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+  }
+  &-icon {
+    width: 25px;
+    height: 25px;
+  }
+  &-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 1rem;
   }
 }

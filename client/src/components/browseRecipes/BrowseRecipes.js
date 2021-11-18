@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import SearchBox from "../searchBox/SearchBox";
 import RecipeList from "../recipeList/RecipeList";
 import RecipeDetails from "../recipeDetails/RecipeDetails";
+import axios from "axios";
 
 //`${API_URL}/mediterranean`
 class BrowseRecipes extends Component {
@@ -29,17 +30,19 @@ class BrowseRecipes extends Component {
       recipes: data,
     });
   };
-
-  getIndividualRecipe = async (mediterraneanId) => {
-    const response = await fetch(
-      `http://localhost:8080/mediterranean/${mediterraneanId}`
-    );
-    console.log(response);
-    const data = await response.json();
-    console.log(data);
-    this.setState({
-      selectedRecipe: data,
-    });
+  //axios
+  getIndividualRecipe = (mediterraneanId) => {
+    return axios
+      .get(`http://localhost:8080/mediterranean/${mediterraneanId}`)
+      .then((res) => {
+        console.log(res);
+        this.setState({
+          selectedRecipe: res.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   componentDidMount() {
